@@ -140,7 +140,7 @@ async fn patch_links(node: &Node, nodes: &HashMap<String, Node>) -> Result<()> {
             let id = caps.get(1).unwrap().as_str();
             let name = caps.get(2).unwrap().as_str();
             let target_node = nodes.get(id).unwrap();
-            let target_file = format!("./{}.md", target_node.title);
+            let target_file = format!("./{}.md", target_node.title.replace(' ', "%20"));
             format!("[[{target_file}][{name}]]")
         })
         .to_string();
